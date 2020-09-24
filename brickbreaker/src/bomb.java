@@ -4,8 +4,7 @@ public class bomb extends Block implements Entity
 {
 	int x, y, w, h;
 	
-	public bomb(int radius, int inx, int iny)
-	{
+	public bomb(int radius, int inx, int iny){
 		x = inx;
 		y = iny;
 		w = h = radius;
@@ -22,30 +21,24 @@ public class bomb extends Block implements Entity
 		p.ellipse(x, y, w, h);
 		
 	}
-	
-	public void blowup()
-	{
-		
+	//instantiate bombs
+	public void blowup(){
 		if (w >= 150)
 		{
 			this.disappear();
-		}
-		else
-		{
+		} else {
 			h += 15;
 			w += 15;
 		}
 	}
 	
-	public void disappear()
-	{
+	public void disappear(){
 		w = 0;
 		h = 0;
 		x = 0;
 		y = 0;
 	}
-	public int getRadius()
-	{
+	public int getRadius(){
 		return w;
 	}
 

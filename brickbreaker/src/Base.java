@@ -12,6 +12,7 @@ public class Base extends Block {
 	}
 
 	@Override
+	//code for when something collides with the missle
 	public boolean collide(Missle m) {
 		if (m.x- m.w/2 > this.x + this.w) {return false;}  //left
 		if (m.x+ m.w/2 < this.x  ) {return false;}  //right

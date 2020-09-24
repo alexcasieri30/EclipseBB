@@ -27,22 +27,29 @@ public class MainClass extends PApplet {
 			for (int col  =1; col<=10; col++ ) {
 				t= new Target(row,col);
 				mcol++;
+				
+				//add each target to the entities interface
 				entities.add(t);
-				t.setRow(mrow);
+				
+				t.setRow(mrow); //make a grid of 5x10 targets
 				t.setCol(mcol);
 			}
 		}
+		//code for adding random 'bombs' throughout the board
 		for (int i = 0; i < 8; i++) {
 			y = r.nextInt(250) + 50;
 			x = r.nextInt(1000);
 			//code for making bombs
 			bomb1 = new bomb(25, x, y);
-			entities.add(bomb1);
+			entities.add(bomb1);//add bombs to the entities list
 		}
+		
+		//add random barriers 
 		for (int row = 1; row<=6; row++) {
 			barr= new Barrier(row);  
 			entities.add(barr);
 		}
+		//add base and missle and set params
 		base = new Base();
 		m = new Missle(base,nCols,nRows);
 		entities.add(base);
@@ -83,6 +90,8 @@ public class MainClass extends PApplet {
 			}
 		}
 		background(200);
+		
+		//different colors in the grid of targets
 		for (Entity myentity: entities) {
 			if (myentity instanceof Target) 
 			{
@@ -103,6 +112,8 @@ public class MainClass extends PApplet {
 					((Target)myentity).setColor(this,  0, 0, 255);
 				}
 			}
+			//for the barriers use moveRight and moveLeft functions
+			//to get them to move back and forth
 			if (myentity instanceof Barrier) {
 				if (frameCount % 60 >= 30){
 					((Barrier) myentity).moveRight();
@@ -117,6 +128,7 @@ public class MainClass extends PApplet {
 		}
 	}
 	
+	//click left or right of base to change size of base
 	public void mouseClicked()
 	{
 		if (mouseX > base.x + base.w/2) {
@@ -125,6 +137,7 @@ public class MainClass extends PApplet {
 			base.w += 5;
 		}
 	}
+	//code to activate missle
 	public void keyPressed(){ 
 		if (keyCode == UP) {
 			m.fired = true;}			 

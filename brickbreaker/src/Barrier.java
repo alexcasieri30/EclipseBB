@@ -12,13 +12,11 @@ public class Barrier extends Block{
 			y = 300;
 		}
     }
-    
-    public void moveRight()
-    {
+    //code to keep the barriers moving
+    public void moveRight(){
     	x += 5;
     }
-    public void moveLeft()
-    {
+    public void moveLeft(){
     	x -= 5;
     }
     
@@ -30,6 +28,7 @@ public class Barrier extends Block{
 	}
 
 	@Override
+	//colliding with missle
 	public boolean collide(Missle m) {
 		if (m.x- m.w/2 > this.x + this.w) {return false;}  //left
 		if (m.x+ m.w/2 < this.x  ) {return false;}  //right
